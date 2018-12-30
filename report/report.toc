@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}问题描述}{2}
+\contentsline {subsection}{\numberline {1.1}股价变动机制}{2}
+\contentsline {subsection}{\numberline {1.2}数据描述}{2}
+\contentsline {section}{\numberline {2}算法设计}{3}
+\contentsline {subsection}{\numberline {2.1}LSTM}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}算法介绍}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}建模方式}{3}
+\contentsline {subsubsection}{\numberline {2.1.3}参数选择依据}{3}
+\contentsline {subsection}{\numberline {2.2}DNN}{3}
+\contentsline {subsubsection}{\numberline {2.2.1}算法介绍}{3}
+\contentsline {subsubsection}{\numberline {2.2.2}建模方式}{3}
+\contentsline {subsection}{\numberline {2.3}其他的尝试——底层LSTM的实现}{3}
+\contentsline {subsubsection}{\numberline {2.3.1}模型搭建的方法}{3}
+\contentsline {section}{\numberline {3}组员分工}{3}
+\contentsline {section}{\numberline {4}感想}{3}
+\contentsline {section}{\numberline {5}参考文献}{3}
