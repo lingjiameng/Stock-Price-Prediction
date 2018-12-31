@@ -3,6 +3,7 @@
 \usepackage{cite}
 \usepackage{enumerate}
 \usepackage{geometry}
+\usepackage{amsmath}
 \title{EI339 Class Project Report}
 \author{陈子轩 516030910545}
 \date{2018年12月}
@@ -59,19 +60,38 @@ LSTM在RNN的基础上，改进了工作单元的机构，传统的RNN模块包�
     \includegraphics[scale = 0.8]{p5.png}
     \caption{LSTM的内部结构\cite{2}}
 \end{figure}
-\paragraph*{1. 决定丢弃信息}对于上一个时间点的信息，首先决定丢弃那些信息，这一步通过遗忘门来决定,该门将读取$h_{t-1}$和$x_t$,输出一个$f_t$,$f_t$内的值为$[0,1]$,0表示完全舍弃，1表示完全保留。
-$$f_t = \sigma(W_f\cdot x_t + U_f\cdot h_{t-1} + b_f)$$
+\paragraph{1. 决定丢弃信息}对于上一个时间点的信息，首先决定丢弃那些信息，这一步通过遗忘门来决定,该门将读取$h_{t-1}$和$x_t$,输出一个$f_t$,$f_t$内的值为$[0,1]$,0表示完全舍弃，1表示完全保留。
+\begin{equation}\label{ft}
+    f_t = \sigma(W_f\cdot x_t + U_f\cdot h_{t-1} + b_f)
+\end{equation}
+
 \paragraph*{2. 确定新信息}
 下一步将是决定什么样的新信息将被存放在细胞状态中，这一步包含两个门，输入门和新记忆，\textbf{新记忆}通过tanh函数构建候选信息向量，\textbf{输入门}通过sigmoid函数判定什么值将要更新。
-$$i_t = \sigma(W_i\cdot x_t + U_i\cdot h_{t-1} + b_f)$$
-$$a_t = \sigma(W_a\cdot x_t + U_a\cdot h_{t-1} + b_f)$$
+\begin{equation}\label{it}
+    i_t  =\sigma (W_i\cdot x_t + U_i\cdot h_{t-1} + b_f)
+\end{equation}
+
+\begin{equation}\label{at}
+a_t  = \sigma (W_a\cdot x_t + U_a\cdot h_{t-1} + b_f)
+\end{equation}
+
 \paragraph*{3. 更新细胞状态}
 然后，新记忆将于旧记忆结合构成新的细胞状态
-$$C_t = f_t\cdot C_{t-1} + i_t \cdot a_t$$
-\paragraph*{4. 确定新信息}
+
+\begin{equation}\label{ct}
+C_t = f_t\cdot C_{t-1} + i_t \cdot a_t
+\end{equation}
+
+\paragraph*{4. 确定新输出}
 最后，我们通过一个\textbf{输出门}决定什么将被输出
-$$o_t = \sigma(W_o\cdot x_t + U_o\cdot h_{t-1} + b_f)$$
-$$h_t = tanh(C_t)\cdot o_t$$
+
+\begin{equation}\label{ot}
+o_t = \sigma(W_o\cdot x_t + U_o\cdot h_{t-1} + b_f)
+\end{equation}
+
+\begin{equation}\label{ht}
+h_t = tanh(C_t)\cdot o_t
+\end{equation}
 \subsubsection{建模方式}
 \begin{figure}[!htbp]
     \centering
@@ -92,8 +112,56 @@ $$h_t = tanh(C_t)\cdot o_t$$
 \begin{figure}[!htbp]
     \centering
     \includegraphics[scale = 0.6]{p7.png}
-    \caption{LSTM建模\cite{2}}
+    \caption{LSTM反向传播\cite{3}}
 \end{figure}
+我们将前向传播的过程倒过来看
+\paragraph*{1.确定新的输出}
+由\ref{ht}式可以得出，如果令$\delta h_t = \frac{\partial E}{\partial h_t}$,则有
+
+\begin{equation}
+\frac{\partial E}{\partial o_i^t} = \frac{\partial E}{\partial h_i^t} \cdot \frac{\partial h_i^t}{\partial o_i^t} 
+\end{equation}
+\begin{equation}
+\delta o^t = \frac{\partial E}{\partial o^t} =\delta h^t \odot tanh(c^t)  
+\end{equation}
+同理
+\begin{equation}
+\frac{\partial E}{\partial c_i^t} = \frac{\partial E}{\partial h_i^t} \cdot \frac{\partial h_i^t}{\partial c_i^t}
+\end{equation}
+\begin{equation}
+\delta c^t  += \frac{\partial E}{\partial c^t} =\delta h^t \odot o^t \odot (1 - tanh^2(c^t))
+\end{equation}
+这里用\textbf{+=}的原因是$c^t$记忆了所有时刻的细胞状态,故每个时间点迭代时，$c^t$累加
+\paragraph*{2.确定新的细胞状态}
+由\ref{ct}式，可以得到loss对于各个细胞状态的偏导
+\begin{alignat}
+\delta i^t & = \delta c^t \odot a^t\\
+\delta f^t & = \delta c^t \odot c^{t - 1}\\
+\delta a^t & = \delta c^t \odot i^t\\
+\delta c^{t-1} & = \delta c^t \odot f^t
+\end{alignat}
+令
+\begin{align}
+\hat{i^t} & = W_i\cdot x_t + U_i\cdot h_{t-1} + b_f\\ 
+\hat{f^t} & = W_f\cdot x_t + U_f\cdot h_{t-1} + b_f\\
+\hat{a^t} & = W_a\cdot x_t + U_a\cdot h_{t-1} + b_f\\
+\hat{c^t} & = W_c\cdot x_t + U_c\cdot h_{t-1} + b_f
+\end{align}
+则有
+\begin{align}
+\delta \hat{i^t} & = \delta i^t \odot\hat{i^t}\odot (1-\hat{i^t})\\
+\delta \hat{f^t} & = \delta f^t \odot\hat{f^t}\odot (1-\hat{f^t})\\
+\delta \hat{a^t} & = \delta a^t \odot (1-tanh^2(\hat{a^t}))\\
+\delta \hat{c^{t-1}} & = \delta c^t \odot\hat{c^t}\odot (1-\hat{c^t})
+\end{align}
+最后，可以求得各个权重矩阵的偏导数 
+\begin{align}
+\delta W_i & +=\delta \hat{i^t} * h_{t-1}^T,& \delta U_i & +=\delta \hat{i^t} * x_t^T, &\delta b_i &+= \delta \hat{i^t}\\
+\delta W_f & +=\delta \hat{f^t} * h_{t-1}^T,& \delta U_f & +=\delta \hat{f^t} * x_t^T, &\delta b_f &+= \delta \hat{f^t}\\
+\delta W_a & +=\delta \hat{a^t} * h_{t-1}^T,& \delta U_a & +=\delta \hat{a^t} * x_t^T, &\delta b_a &+= \delta \hat{a^t}\\
+\delta W_c & +=\delta \hat{c^t} * h_{t-1}^T,& \delta U_c & +=\delta \hat{c^t} * x_t^T, &\delta b_c &+= \delta \hat{c^t}
+\end{align}
+至此，反向传播过程完毕，求得对各个权重矩阵的偏导后便可进行随机梯度下降了。
 \section{组员分工}
 \begin{enumerate}
     \item 陈子轩 LSTM模型搭建，底层LSTM实现，实验报告撰写
@@ -106,7 +174,6 @@ $$h_t = tanh(C_t)\cdot o_t$$
 \begin{thebibliography}{3}
     \bibitem{1}https://colah.github.io/posts/2015-08-Understanding-LSTMs/
     \bibitem{2}https://blog.csdn.net/u012319493/article/details/52802302
-    \bibitem{3}
-    
+    \bibitem{3}https://arunmallya.github.io/writeups/nn/lstm/index.html\#/
 \end{thebibliography}
 \end{document}

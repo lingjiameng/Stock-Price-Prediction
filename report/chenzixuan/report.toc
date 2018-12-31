@@ -5,6 +5,7 @@
 \contentsline {section}{\numberline {2}算法设计}{3}
 \contentsline {subsection}{\numberline {2.1}LSTM}{3}
 \contentsline {subsubsection}{\numberline {2.1.1}算法介绍}{3}
+\contentsline {paragraph}{1. 决定丢弃信息}{3}
 \contentsline {subsubsection}{\numberline {2.1.2}建模方式}{5}
 \contentsline {subsubsection}{\numberline {2.1.3}参数选择依据}{6}
 \contentsline {subsection}{\numberline {2.2}DNN}{6}
@@ -13,5 +14,5 @@
 \contentsline {subsection}{\numberline {2.3}其他的尝试——底层LSTM的实现}{6}
 \contentsline {subsubsection}{\numberline {2.3.1}模型搭建的方法}{6}
 \contentsline {subsubsection}{\numberline {2.3.2}建模方式}{6}
-\contentsline {section}{\numberline {3}组员分工}{7}
-\contentsline {section}{\numberline {4}感想}{7}
+\contentsline {section}{\numberline {3}组员分工}{8}
+\contentsline {section}{\numberline {4}感想}{8}

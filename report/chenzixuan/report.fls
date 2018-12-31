@@ -1,8 +1,8 @@
-PWD d:/zchen/Documents/Github/Stock-Price-Prediction/report
+PWD d:/zchen/Documents/Github/Stock-Price-Prediction/report/chenzixuan
 INPUT c:/texlive/2017/texmf.cnf
 INPUT c:/texlive/2017/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT d:/zchen/Documents/Github/Stock-Price-Prediction/report/report.tex
+INPUT d:/zchen/Documents/Github/Stock-Price-Prediction/report/chenzixuan/report.tex
 OUTPUT report.log
 INPUT c:/texlive/2017/texmf-dist/tex/latex/ctex/ctexart.cls
 INPUT c:/texlive/2017/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -127,6 +127,16 @@ INPUT c:/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 INPUT c:/texlive/2017/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 INPUT c:/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 INPUT c:/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
 INPUT c:/texlive/2017/texmf-dist/tex/latex/cjk/texinput/utf8/UTF8.bdg
 INPUT c:/texlive/2017/texmf-dist/tex/latex/cjk/texinput/utf8/UTF8.bdg
 INPUT c:/texlive/2017/texmf-dist/tex/latex/cjk/texinput/utf8/UTF8.enc
@@ -166,6 +176,9 @@ INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
+INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2017/texmf-dist/tex/latex/ctex/fd/c70rm.fd
 INPUT c:/texlive/2017/texmf-dist/tex/latex/ctex/fd/c70rm.fd
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong96.tfm
@@ -192,6 +205,9 @@ INPUT c:/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong52.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong67.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong65.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong63.tfm
 INPUT c:/texlive/2017/texmf-dist/fonts/tfm/zhmetrics/unisong/unisong8f.tfm
@@ -469,6 +485,7 @@ INPUT c:/Windows/fonts/simsun.ttc
 INPUT c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 INPUT c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
