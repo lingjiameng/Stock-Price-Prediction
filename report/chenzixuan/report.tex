@@ -102,8 +102,13 @@ h_t = tanh(C_t)\cdot o_t
 
 \subsubsection{参数选择依据}
 \subsection{DNN}
-\subsubsection{算法介绍}
 \subsubsection{建模方式}
+DNN的建模方式比较简单，如图6所示，由三个全连接层构成
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[scale = 0.6]{p8.png}
+    \caption{DNN模型结构\cite{2}}
+\end{figure}
 \subsection{其他的尝试——底层LSTM的实现}
 由于前面两种模型都是使用pytorch进行搭建的，很多内部结构以及前向传播和反向传播过程都是由pytorch内部自动完成的，为了进一步探究关于LSTM的内部数据传递和前向和反向传递的原理，我们使用numpy从底层对LSTM进行了实现。
 \subsubsection{模型搭建的方法}
