@@ -8,6 +8,7 @@ import torchvision.transforms as transforms
 import torch.utils.data as Data
 import numpy as np
 import pandas as pd
+import re
 
 # Hyper Parameters
 # train the training data n times, to save time, we just train 1 epoch
@@ -128,7 +129,7 @@ def loadmodel():
     if 0==last:
         return ""
     else:
-        return 
+        return "data/model/rnn_param" + str(st) + ".pkl"
 
 class RNN(nn.Module):
     def __init__(self):
@@ -170,6 +171,7 @@ rnn = RNN()
 modeldir = loadmodel()
 if modeldir != "":
     print("[load model!!]")
+    print(modeldir)
     rnn = torch.load(modeldir,map_location={"cuda:2": "cuda:0"})
 
 rnn.to(cuda0)
